@@ -3,7 +3,7 @@
 
 
 def matrix_shape(matrix):
-    # Output: list of integers [row,columns, element]
+    """Output: list of integers [row,columns, element]"""
     if isinstance(matrix[0], list):
         return [len(matrix)] + matrix_shape(matrix[0])
     else:
