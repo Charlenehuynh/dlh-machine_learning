@@ -3,6 +3,7 @@
 
 
 def add_matrices2D(mat1, mat2):
+    ''' input mat1, mat2, output matrix'''
     if len(mat1) != len(mat2) or len(mat1[0]) != len(mat2[0]):
         return None
     result = []
