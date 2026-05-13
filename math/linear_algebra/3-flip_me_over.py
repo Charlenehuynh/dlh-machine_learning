@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-
+''' Transpose matrix'''
 
 def matrix_transpose(matrix):
+    ''' Input origignal matrix, output new transpose matrix'''
     new_matrix = []
     # get how many columns
     for col in range(len(matrix[0])):
