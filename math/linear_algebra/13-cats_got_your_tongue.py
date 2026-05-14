@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
+"""numpy.concat"""
 
 import numpy as np
 
 
 def np_cat(mat1, mat2, axis=0):
+    """concat 2 matrices"""
     return np.concatenate((mat1, mat2), axis)
 
 
