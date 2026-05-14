@@ -4,6 +4,7 @@ multiplication, and division:"""
 
 
 def np_elementwise(mat1, mat2):
+    ''' return tuple'''
     addition = mat1 + mat2
     sub = mat1 - mat2
     mul = mat1 * mat2
