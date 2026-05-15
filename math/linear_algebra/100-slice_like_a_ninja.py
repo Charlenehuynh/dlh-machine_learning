@@ -7,7 +7,7 @@ def np_slice(matrix, axes={}):
     my_list = [slice(None)] * matrix.ndim
     for key, value in axes.items():
         my_list[key] = slice(*value)
-    return matrix[my_list]
+    return matrix[tuple(my_list)]
 
 
 # import numpy as np
