@@ -4,13 +4,10 @@
 
 def np_slice(matrix, axes={}):
     """Output new matrix"""
-    result = matrix
     my_list = [slice(None)] * matrix.ndim
     for key, value in axes.items():
         my_list[key] = slice(*value)
-    return result
-
-    # else: #slice vertical
+    return matrix[my_list]
 
 
 # import numpy as np
