@@ -3,9 +3,7 @@
 
 def mat_mul(mat1, mat2):
     # determine if matrix is valid (1st matrix column is name is 2nd matrix row)
-    print(len(mat2))
 
-    
     if len(mat1[0]) != len(mat2):
         return None
     result = []
