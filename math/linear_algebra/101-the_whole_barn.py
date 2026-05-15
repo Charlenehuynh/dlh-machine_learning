@@ -13,7 +13,10 @@ def add_matrices(mat1, mat2):
         if type(mat1[i]) is int:
             result.append(mat1[i] + mat2[i])
         else:
-            result.append(add_matrices(mat1[i], mat2[i]))
+            temp = add_matrices(mat1[i], mat2[i])
+            if temp is None:
+                return None
+            result.append(temp)
     return result
 
 
