@@ -8,8 +8,13 @@ def cat_matrices(mat1, mat2, axis=0):
     if axis == 0:
         return mat1 + mat2
     else:
+        if len(mat1) != len(mat2):
+            return None
         for row1, row2 in zip(mat1, mat2):
-            result.append(cat_matrices(row1, row2, axis - 1))
+            temp = cat_matrices(row1, row2, axis - 1)
+            if temp is None:
+                return None
+            result.append(temp)
     return result
 
 
