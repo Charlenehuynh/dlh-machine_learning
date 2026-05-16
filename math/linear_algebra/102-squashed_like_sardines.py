@@ -6,6 +6,8 @@ def cat_matrices(mat1, mat2, axis=0):
     """Input mat1,mat2 output new matrix"""
     result = []
     if axis == 0:
+        if isinstance(mat1[0], list) and len(mat1[0]) != len(mat2[0]):
+            return None
         return mat1 + mat2
     else:
         if len(mat1) != len(mat2):
