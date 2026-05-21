@@ -1,14 +1,10 @@
 #!/usr/bin/env python3
 
-"""adding the top 10 of the most present IPs in the collection nginx of the database logs"""
+"""adding the top 10 of the most present IPs in
+ the collection nginx of the database logs"""
 
-from pymongo import MongoClient
 
-if __name__ == "__main__":
-    client = MongoClient("mongodb://127.0.0.1:27017")
-    nginx_collection = client.logs.nginx
-
-ip_logs = nginx_collection.aggregate(
+ip_logs = nginx_collection.aggregate( # type: ignore
     [
         {"$group": {"_id": "$ip", "count": {"$sum": 1}}},
         {"$sort": {"count": -1}},
