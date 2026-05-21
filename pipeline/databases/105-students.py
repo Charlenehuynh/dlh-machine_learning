@@ -4,6 +4,7 @@
 
 
 def top_students(mongo_collection):
+    ''' return avg score'''
     return mongo_collection.aggregate(
         [
             {"$addFields": {"averageScore": {"$avg": "$topics.score"}}},
