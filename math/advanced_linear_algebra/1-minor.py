@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-
-"""function that calculates the determinant of a matrix:"""
+"""Calculate minor matrix"""
 
 
 def determinant(matrix):
@@ -36,24 +35,42 @@ def determinant(matrix):
     return total
 
 
-# mat0 = [[]]
+def minor(matrix):
+    # base case: len(matrix) is 1 or 2
+    if any(type(row) is not list for row in matrix) or matrix == []:
+        raise TypeError("matrix must be a list of lists")
+    elif any(len(row) != len(matrix) for row in matrix):
+        raise ValueError("matrix must be a square matrix")
+    if len(matrix) == 1:
+        return [[1]]
+    minor_mat = []
+    for i in range(len(matrix)):  # loop through row
+        row = []
+        for j in range(len(matrix)):  # loop through column
+            submatrix = [
+                row[:j] + row[j + 1 :] for row in (matrix[:i] + matrix[i + 1 :])
+            ]
+            row.append(determinant(submatrix))
+        minor_mat.append(row)
+    return minor_mat
+
+
 # mat1 = [[5]]
 # mat2 = [[1, 2], [3, 4]]
 # mat3 = [[1, 1], [1, 1]]
-mat4 = [[5, 7, 9], [3, 1, 8], [6, 2, 4]]
+# mat4 = [[5, 7, 9], [3, 1, 8], [6, 2, 4]]
 # mat5 = []
 # mat6 = [[1, 2, 3], [4, 5, 6]]
 
-# print(determinant(mat0))
-# print(determinant(mat1))
-# print(determinant(mat2))
-# print(determinant(mat3))
-print(determinant(mat4))
+# print(minor(mat1))
+# print(minor(mat2))
+# print(minor(mat3))
+# print(minor(mat4))
 # try:
-#     determinant(mat5)
+#     minor(mat5)
 # except Exception as e:
 #     print(e)
 # try:
-#     determinant(mat6)
+#     minor(mat6)
 # except Exception as e:
 #     print(e)
