@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+''' that calculates the adjugate matrix of a matrix: '''
+
 
 def determinant(matrix):
     """input matrix. output determinant"""
