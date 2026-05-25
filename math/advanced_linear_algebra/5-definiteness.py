@@ -14,21 +14,20 @@ def definiteness(matrix):
         return None
     elif matrix.shape[0] != matrix.shape[1] or matrix.size == 0:
         return None
-    D1 = matrix[0][0]
-    D2 = matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
-    D3 = np.linalg.det(matrix)
-    if D1 > 0 and D2 > 0 and D3 > 0:
-        result = "Positive definite"
-    elif D1 < 0 and D2 > 0:
-        result = "Negative definite"
-    elif any(d == 0 for d in [D1, D2, D3]) and all(d >= 0 for d in [D1, D2, D3]):
-        result = "Positive semi-definite"
-    elif any(d == 0 for d in [D1, D2, D3]) and (D1 <= 0 and D2 >= 0 and D3 <= 0):
-        result = "Negative semi-definite"
+    if not np.array_equal(matrix, matrix.T):
+        return None
+    eigenvalues = np.linalg.eigvalsh(matrix)
+
+    if np.all(eigenvalues > 0):
+        return "Positive definite"
+    elif np.all(eigenvalues >= 0):
+        return "Positive semi-definite"
+    elif np.all(eigenvalues < 0):
+        return "Negative definite"
+    elif np.all(eigenvalues <= 0):
+        return "Negative semi-definite"
     else:
-        result = "Indefinite"
-    print(D1, D2, D3)
-    return result
+        return "Indefinite"
 
 
 # mat1 = np.array([[5, 1], [1, 1]])
