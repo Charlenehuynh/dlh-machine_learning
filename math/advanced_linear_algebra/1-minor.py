@@ -40,7 +40,7 @@ def minor(matrix):
     if any(type(row) is not list for row in matrix) or matrix == []:
         raise TypeError("matrix must be a list of lists")
     elif any(len(row) != len(matrix) for row in matrix):
-        raise ValueError("matrix must be a square matrix")
+        raise ValueError("matrix must be a non-empty square matrix")
     if len(matrix) == 1:
         return [[1]]
     minor_mat = []
