@@ -48,7 +48,8 @@ def minor(matrix):
         row = []
         for j in range(len(matrix)):  # loop through column
             submatrix = [
-                row[:j] + row[j + 1 :] for row in (matrix[:i] + matrix[i + 1 :])
+                row[:j] + row[j + 1:]
+                for row in (matrix[:i] + matrix[i + 1:])
             ]
             row.append(determinant(submatrix))
         minor_mat.append(row)
