@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
-
-
 def summation_i_squared(n):
-    if type(n) is not int:
+    if not isinstance(n, (int, float)) or isinstance(n, bool):
         return None
-    sum = (n * (n + 1) * (2 * n + 1)) / 6
-    return sum
+    return ((n * (n + 1) * (2 * n + 1)) / 6)
