@@ -13,7 +13,7 @@ def poly_derivative(poly):
             ls.append(poly[i] * i)
     if all(num == 0 for num in ls):
         return [0]
-    return ls  
+    return ls
 
 
 # poly = [5, 3, 0, 1]
