@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
+""" that calculates the derivative of a polynomial: """
+
 
 def poly_derivative(poly):
+    """ derivative of polynomial"""
     if not isinstance(poly, list):
         return None
     if len(poly) == 1:
