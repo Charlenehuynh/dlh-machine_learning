@@ -4,7 +4,7 @@
 
 def poly_derivative(poly):
     """ derivative of polynomial"""
-    if not isinstance(poly, list):
+    if not (isinstance(poly, list) & all(isinstance(i, int) for i in poly)):
         return None
     if len(poly) == 1:
         return [0]
@@ -19,5 +19,5 @@ def poly_derivative(poly):
     return ls
 
 
-# poly = [5, 3, 0, 1]
+# poly = ["not list", 3, 0, 1]
 # print(poly_derivative(poly))
