@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
+''' Scatter plot'''
 import numpy as np
 import matplotlib.pyplot as plt
-''' Scatter plot'''
 
 
 def scatter():
