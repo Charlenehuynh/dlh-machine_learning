@@ -75,4 +75,4 @@ def all_in_one():
     plt.tight_layout()
     plt.show()
 
-# all_in_one()
+all_in_one()
