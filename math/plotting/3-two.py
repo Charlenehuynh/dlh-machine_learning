@@ -25,4 +25,4 @@ def two():
     plt.show()
 
 
-two()
+# two()
