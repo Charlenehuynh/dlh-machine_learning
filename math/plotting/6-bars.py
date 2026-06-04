@@ -32,4 +32,4 @@ def bars():
     plt.show()
 
 
-bars()
+# bars()
