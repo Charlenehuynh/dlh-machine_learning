@@ -9,8 +9,7 @@ def bars():
     np.random.seed(5)
     fruit = np.random.randint(0, 20, (4, 3))
     plt.figure(figsize=(6.4, 4.8))
-
-    plt.ylabel("Quantity of fruit")
+    plt.ylabel("Quantity of Fruit")
     labels = ['Farrah', 'Fred', 'Felicia']
     x = np.arange(len(labels))
     width = 0.5
@@ -26,11 +25,11 @@ def bars():
     plt.bar(x, peaches, bottom=oranges + bananas + apples,
             width=width, color='#ffe5b4', label='peaches')
     plt.xticks(x, labels)
+    plt.yticks(np.arange(0, 81, 10))
     plt.legend(loc='upper right')
     plt.ylim(0, 80)
-    plt.yticks(np.arange(0, 81, 10))
     plt.title("Number of Fruit per Person")
     plt.show()
 
 
-# bars()
+bars()
