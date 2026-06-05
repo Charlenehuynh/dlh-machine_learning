@@ -6,17 +6,14 @@ def poly_integral(poly, C=0):
     """integral of polynomial"""
     if not isinstance(poly, list) or not isinstance(C, int):
         return None
-    if len(poly) == 1:
-        return poly
+    if not all(isinstance(i, (int, float)) for i in poly):
+        return None
     ls = [C]
     for i in range(0, len(poly)):
-        if poly[i] == 0:
-            ls.append(0)
-        else:
-            # ls.append(poly[i] / (i + 1))
-            temp = poly[i] / (i + 1)
-            ls.append(int(temp) if temp.is_integer() else temp)
-    while len(ls) > 1 and ls[1] == 0:
+        # ls.append(poly[i] / (i + 1))
+        temp = poly[i] / (i + 1)
+        ls.append(int(temp) if temp % 1 else temp)
+    while len(ls) > 1 and ls[-1] == 0:
         ls.pop()
     return ls
 
