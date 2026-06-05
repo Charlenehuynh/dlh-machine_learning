@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-""" that calculates the integral of a polynomial: """
+"""that calculates the integral of a polynomial:"""
 
 
 def poly_integral(poly, C=0):
-    """ integral of polynomial"""
-    if not (isinstance(poly, list) & isinstance(C, int)):
+    """integral of polynomial"""
+    if not isinstance(poly, list) or not isinstance(C, int):
         return None
     if len(poly) == 1:
         return poly
@@ -16,8 +16,8 @@ def poly_integral(poly, C=0):
             # ls.append(poly[i] / (i + 1))
             temp = poly[i] / (i + 1)
             ls.append(int(temp) if temp.is_integer() else temp)
-    if all(num == 0 for num in ls):
-        return [0]
+    while len(ls) > 1 and ls[1] == 0:
+        ls.pop()
     return ls
 
 
