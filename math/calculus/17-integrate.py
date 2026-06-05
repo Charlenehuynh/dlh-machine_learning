@@ -12,7 +12,7 @@ def poly_integral(poly, C=0):
     for i in range(0, len(poly)):
         # ls.append(poly[i] / (i + 1))
         temp = poly[i] / (i + 1)
-        ls.append(int(temp) if temp % 1 else temp)
+        ls.append(int(temp) if temp % 1 == 0 else temp)
     while len(ls) > 1 and ls[-1] == 0:
         ls.pop()
     return ls
