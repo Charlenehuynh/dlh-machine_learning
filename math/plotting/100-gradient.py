@@ -17,10 +17,10 @@ def gradient():
     plt.xlabel("x coordinate (m)")
     plt.ylabel("y coordinate (m)")
     plt.title("Mountain Elevation")
-    scatter = plt.scatter(x, y, c=z, cmap="terrain")
+    scatter = plt.scatter(x, y, c=z, cmap="viridis")
     cb = plt.colorbar(scatter)
     cb.set_label("elevation (m)")
     plt.show()
 
 
-# gradient()
+gradient()
