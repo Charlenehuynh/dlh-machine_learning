@@ -1,21 +1,18 @@
 #!/usr/bin/env python3
-""" that calculates the derivative of a polynomial: """
+"""that calculates the derivative of a polynomial:"""
 
 
 def poly_derivative(poly):
-    """ derivative of polynomial"""
-    if not (isinstance(poly, list) & all(isinstance(i, int) for i in poly)):
+    """derivative of polynomial"""
+    if not isinstance(poly, list) or not poly:
         return None
     if len(poly) == 1:
         return [0]
     ls = []
     for i in range(1, len(poly)):
-        if poly[i] == 0:
-            ls.append(0)
-        else:
-            ls.append(poly[i] * i)
-    if all(num == 0 for num in ls):
-        return [0]
+        ls.append(poly[i] * i)
+    while len(ls) > 1 and ls[-1] == 0:
+        ls.pop()
     return ls
 
 
