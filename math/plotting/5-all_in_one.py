@@ -2,6 +2,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 def all_in_one():
 
     y0 = np.arange(0, 11) ** 3
@@ -27,52 +28,63 @@ def all_in_one():
     np.random.seed(5)
     student_grades = np.random.normal(68, 15, 50)
 
+    ##FONT
+    plt.rcParams["axes.labelsize"] = "x-small"
+    plt.rcParams["axes.titlesize"] = "x-small"
+
     plt.figure(figsize=(14, 10))
-    plt.suptitle('All in One')
+    plt.suptitle("All in One")
     # TOP LEFT - RED LINE
     plt.subplot(3, 2, 1)
     plt.xlim(0, 10)
+    plt.yticks([0, 500, 1000])
     plt.plot(y0, color="red")
-    
-    
-    #TOP RIGHT
-    plt.subplot(3,2,2)
+
+    # TOP RIGHT
+    plt.subplot(3, 2, 2)
     plt.title("Men's Height vs Weight")
     plt.xlabel("Height (in)")
     plt.ylabel("Weight (lbs)")
+    plt.yticks([170, 180, 190])
+    plt.xticks([60, 70, 80])
     plt.scatter(x1, y1, color="magenta")
-    
-    #MID LEFT
-    plt.subplot(3,2,3)
+
+    # MID LEFT
+    plt.subplot(3, 2, 3)
     plt.xlabel("Time (years)")
     plt.ylabel("Fraction Remaining")
     plt.title("Exponential Decay of C-14")
     plt.xlim(0, 28650)
+    plt.xticks([10000, 20000])
     plt.yscale("log")
     plt.plot(x2, y2)
-    
-    #MID RIGHT
-    plt.subplot(3,2,4)
+
+    # MID RIGHT
+    plt.subplot(3, 2, 4)
     plt.xlabel("Time (years)")
     plt.ylabel("Fraction Remaining")
     plt.title("Exponential Decay of Radioactive Elements")
     plt.xlim(0, 20000)
     plt.ylim(0, 1)
-    plt.plot(x3, y31, color="red", linestyle="--", label='C-14')
-    plt.plot(x3, y32, color="green", linestyle="-", label='Ra-226')
-    plt.legend(loc='upper right')
-    
-    #Bottom row
+    plt.yticks([0.0, 0.5, 1.0])
+    plt.xticks(range(0, 20001, 5000))
+    plt.plot(x3, y31, color="red", linestyle="--", label="C-14")
+    plt.plot(x3, y32, color="green", linestyle="-", label="Ra-226")
+    plt.legend(loc="upper right")
+
+    # Bottom row
     plt.subplot(3, 1, 3)
     plt.xlabel("Grades")
     plt.ylabel("Number of Students")
     plt.title("Project A")
-    plt.hist(student_grades, bins=np.arange(0, 110, 10), edgecolor='black')
+    plt.hist(student_grades, bins=np.arange(0, 110, 10), edgecolor="black")
     plt.xticks(np.arange(0, 110, 10))
+    plt.yticks(range(0, 40, 10))
     plt.xlim(0, 100)
     plt.ylim(0, 30)
 
     plt.tight_layout()
     plt.show()
+
 
 all_in_one()
