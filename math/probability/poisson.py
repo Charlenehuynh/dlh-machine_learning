@@ -15,10 +15,13 @@ class Poisson:
         sum = 0
         for i in data:
             sum = sum + i
-            print (sum)
+            print(sum)
         self.lambtha = sum / len(data)
-        
 
+    def pmf(self, k):
+        if not isinstance(k, int):
+            k = int(k)
+        
 # import numpy as np
 
 # np.random.seed(0)
