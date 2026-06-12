@@ -18,16 +18,3 @@ class Poisson:
             print(sum)
         self.lambtha = sum / len(data)
 
-    def pmf(self, k):
-        if not isinstance(k, int):
-            k = int(k)
-        
-# import numpy as np
-
-# np.random.seed(0)
-# data = np.random.poisson(5., 100).tolist()
-# p1 = Poisson(data)
-# print('Lambtha:', p1.lambtha)
-
-# p2 = Poisson(lambtha=5)
-# print('Lambtha:', p2.lambtha)
