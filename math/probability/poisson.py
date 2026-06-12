@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
+"""Create a class Poisson that represents a poisson distribution"""
+
 
 class Poisson:
-    def __init__(self, data=None, lambtha=1.):
+    """class Poisson"""
+
+    def __init__(self, data=None, lambtha=1.0):
         self.data = data
         self.lambtha = float(lambtha)
         if data is None:
@@ -15,6 +19,4 @@ class Poisson:
         sum = 0
         for i in data:
             sum = sum + i
-            print(sum)
         self.lambtha = sum / len(data)
-
