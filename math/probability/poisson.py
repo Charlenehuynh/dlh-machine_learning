@@ -21,7 +21,7 @@ class Poisson:
         """(lambtha^k *e ^(-lamtha)) / k!"""
         if not isinstance(k, int):
             k = int(k)
-        e = 2.71828
+        e = 2.718281828459045
         sum = 1
         for i in range(1, k + 1):
             sum *= i
