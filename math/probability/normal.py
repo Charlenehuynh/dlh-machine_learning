@@ -64,7 +64,6 @@ class Normal:
         return cdf
 
 
-# import numpy as np
 # np.random.seed(0)
 # data = np.random.normal(70, 10, 100).tolist()
 # n1 = Normal(data)
