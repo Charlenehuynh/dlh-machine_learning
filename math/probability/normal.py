@@ -68,8 +68,6 @@ class Normal:
         return 0.5 * (1 + erf)
 
 
-# import numpy as np
-
 # np.random.seed(0)
 # data = np.random.normal(70, 10, 100).tolist()
 # n1 = Normal(data)
