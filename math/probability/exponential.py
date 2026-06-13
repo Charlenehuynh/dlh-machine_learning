@@ -26,7 +26,7 @@ class Exponential:
     def pdf(self, x):
         """lamtha * e ** (-lambtha * x)"""
 
-        if x <= 0:
+        if x < 0:
             return 0
         pdf = self.lambtha * Exponential.e ** (-self.lambtha * x)
         return pdf
