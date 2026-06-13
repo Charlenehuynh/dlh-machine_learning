@@ -54,6 +54,7 @@ class Binomial:
         return binomial_coeff * (self.p**k) * ((1 - self.p) ** (self.n - k))
 
     def cdf(self, k):
+        """ CDF """
         if not isinstance(k, int):
             k = int(k)
         if k < 0 or k > self.n:
