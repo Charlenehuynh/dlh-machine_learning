@@ -48,26 +48,23 @@ class Normal:
         pdf = (1 / (self.stddev * (2 * Normal.pi) ** 0.5)) * Normal.e ** (-0.5 * z**2)
         return pdf
 
+    def erf(self, x):
+        """calculate erf"""
+        k = 2 / (Normal.pi**0.5)
+        t3 = (x**3) / 3
+        t5 = (x**5) / 10
+        t7 = (x**7) / 42
+        t9 = (x**9) / 216
+        return k * (x - t3 + t5 - t7 + t9)
+
     def cdf(self, x):
-        """F(x) = (1/2) * (1 + erf(z / √2))
-        erf(x) ≈ 1 - (a1t + a2t² + a3t³) * e^(-x²)
-        where t = 1 / (1 + 0.47047x)"""
-        z = Normal.z_score(self, x)
-        x_abs = abs(z / 2**0.5)
-        # calculate erf using more precise coefficients:
-        t = 1 / (1 + 0.3275911 * x_abs)
-        erf = 1 - (
-            0.254829592 * t
-            - 0.284496736 * t**2
-            + 1.421413741 * t**3
-            - 1.453152027 * t**4
-            + 1.061405429 * t**5
-        ) * Normal.e ** (-(x_abs**2))
-        if z < 0:
-            erf = -erf
-        return 0.5 * (1 + erf)
+        """calculate"""
+        z = self.z_score(x)
+        cdf = 0.5 * (1 + self.erf(z / (2**0.5)))
+        return cdf
 
 
+# import numpy as np
 # np.random.seed(0)
 # data = np.random.normal(70, 10, 100).tolist()
 # n1 = Normal(data)
