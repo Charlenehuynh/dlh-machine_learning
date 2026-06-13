@@ -53,11 +53,21 @@ class Binomial:
         binomial_coeff = n_fact / (k_fact * nk_fact)
         return binomial_coeff * (self.p**k) * ((1 - self.p) ** (self.n - k))
 
+    def cdf(self, k):
+        if not isinstance(k, int):
+            k = int(k)
+        if k < 0 or k > self.n:
+            return 0
+        cdf_value = 0
+        for i in range(k + 1):
+            cdf_value += self.pmf(i)
+        return cdf_value
+
 
 # np.random.seed(0)
 # data = np.random.binomial(50, 0.6, 100).tolist()
 # b1 = Binomial(data)
-# print('P(30):', b1.pmf(30))
+# print('F(30):', b1.cdf(30))
 
 # b2 = Binomial(n=50, p=0.6)
-# print('P(30):', b2.pmf(30))
+# print('F(30):', b2.cdf(30))
