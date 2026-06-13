@@ -45,7 +45,7 @@ class Normal:
     def pdf(self, x):
         """f(x) = (1 / (stddev * √(2π))) * e^(-0.5 * z²)"""
         z = Normal.z_score(self, x)
-        pdf = ((1 / (self.stddev * (2 * Normal.pi) ** 0.5)) * 
+        pdf = ((1 / (self.stddev * (2 * Normal.pi) ** 0.5)) *
                Normal.e ** (-0.5 * z**2))
         return pdf
 
