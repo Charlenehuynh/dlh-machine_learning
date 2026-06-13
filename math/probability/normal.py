@@ -5,6 +5,9 @@
 class Normal:
     """mean == average ; stddev = square root (sum(i - mean)^2 / n)"""
 
+    pi = 3.1415926536
+    e = 2.7182818285
+
     def __init__(self, data=None, mean=0.0, stddev=1.0):
         mean = float(mean)
         stddev = float(stddev)
@@ -39,14 +42,17 @@ class Normal:
         x = (z * self.stddev) + self.mean
         return x
 
+    def pdf(self, x):
+        """f(x) = (1 / (stddev * √(2π))) * e^(-0.5 * z²)"""
+        z = Normal.z_score(self, x)
+        pdf = (1 / (self.stddev * (2 * Normal.pi) ** 0.5)) * Normal.e ** (-0.5 * z**2)
+        return pdf
+
 
 # np.random.seed(0)
 # data = np.random.normal(70, 10, 100).tolist()
 # n1 = Normal(data)
-# print('Z(90):', n1.z_score(90))
-# print('X(2):', n1.x_value(2))
+# print("PSI(90):", n1.pdf(90))
 
 # n2 = Normal(mean=70, stddev=10)
-# print()
-# print('Z(90):', n2.z_score(90))
-# print('X(2):', n2.x_value(2))
+# print("PSI(90):", n2.pdf(90))
