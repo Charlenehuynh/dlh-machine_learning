@@ -31,6 +31,8 @@ class Poisson:
         return pmf_value
 
     def cdf(self, k):
+        if not isinstance(k, int):
+            k = int(k)
         if k < 0:
             return 0
         total = 0
