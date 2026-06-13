@@ -17,7 +17,6 @@ class Poisson:
                 raise ValueError("data must contain multiple values")
             self.lambtha = sum(data) / len(data)
 
-# import numpy as np
 
 # np.random.seed(0)
 # data = np.random.poisson(5., 100).tolist()
