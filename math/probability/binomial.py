@@ -35,11 +35,29 @@ class Binomial:
             self.n = round(mean / self.p)
             self.p = mean / self.n
 
+    def pmf(self, k):
+        """P(X = k) = C(n, k) * p^k * (1-p)^(n-k)"""
+        if not isinstance(k, int):
+            k = int(k)
+        if k < 0 or k > self.n:
+            return 0
+        n_fact = 1
+        for i in range(1, self.n + 1):
+            n_fact *= i
+        k_fact = 1
+        for i in range(1, k + 1):
+            k_fact *= i
+        nk_fact = 1
+        for i in range(1, (self.n - k) + 1):
+            nk_fact *= i
+        binomial_coeff = n_fact / (k_fact * nk_fact)
+        return binomial_coeff * (self.p**k) * ((1 - self.p) ** (self.n - k))
+
 
 # np.random.seed(0)
 # data = np.random.binomial(50, 0.6, 100).tolist()
 # b1 = Binomial(data)
-# print('n:', b1.n, "p:", b1.p)
+# print('P(30):', b1.pmf(30))
 
 # b2 = Binomial(n=50, p=0.6)
-# print('n:', b2.n, "p:", b2.p)
+# print('P(30):', b2.pmf(30))
