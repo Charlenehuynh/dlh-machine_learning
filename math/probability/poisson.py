@@ -30,11 +30,20 @@ class Poisson:
         pmf_value = (self.lambtha**k * e ** (-self.lambtha)) / sum
         return pmf_value
 
+    def cdf(self, k):
+        if k < 0:
+            return 0
+        total = 0
+        for i in range(k + 1):
+            pmf_value = Poisson.pmf(self, i)
+            total += pmf_value
+        return total
+
 
 # np.random.seed(0)
 # data = np.random.poisson(5.0, 100).tolist()
 # p1 = Poisson(data)
-# print("P(9):", p1.pmf(9))
+# print("F(9):", p1.cdf(9))
 
 # p2 = Poisson(lambtha=5)
-# print("P(9):", p2.pmf(9))
+# print("F(9):", p2.cdf(9))
