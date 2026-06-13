@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
-''' Create a class Poisson that represents a poisson distribution: '''
+"""Create a class Poisson that represents a poisson distribution:"""
+
+from math import factorial
+from math import e
 
 
 class Poisson:
-    ''' Poisson '''
+    """Poisson"""
 
-    def __init__(self, data=None, lambtha=1.):
+    def __init__(self, data=None, lambtha=1.0):
         if data is None:
             if lambtha <= 0:
                 raise ValueError("lambtha must be a positive value")
@@ -17,11 +20,18 @@ class Poisson:
                 raise ValueError("data must contain multiple values")
             self.lambtha = sum(data) / len(data)
 
+    def pmf(self, k):
+        """(lambtha^k *e ^(-lamtha)) / k!"""
+        if not isinstance(k, int):
+            k = int(k)
+        pmf_value = (self.lambtha**k * e ** (-self.lambtha)) / factorial(k)
+        return pmf_value
+
 
 # np.random.seed(0)
-# data = np.random.poisson(5., 100).tolist()
+# data = np.random.poisson(5.0, 100).tolist()
 # p1 = Poisson(data)
-# print('Lambtha:', p1.lambtha)
+# print("P(9):", p1.pmf(9))
 
 # p2 = Poisson(lambtha=5)
-# print('Lambtha:', p2.lambtha)
+# print("P(9):", p2.pmf(9))
