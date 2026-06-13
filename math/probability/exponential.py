@@ -5,6 +5,8 @@
 class Exponential:
     """lamtha = 1 / average of data"""
 
+    e = 2.7182818285
+
     def __init__(self, data=None, lambtha=1.0):
         if data is None:
             if lambtha <= 0:
@@ -21,11 +23,19 @@ class Exponential:
                 avg += i
             self.lambtha = 1 / (avg / len(data))
 
+    def pdf(self, x):
+        """lamtha * e ** (-lambtha * x)"""
+
+        if x <= 0:
+            return 0
+        pdf = self.lambtha * Exponential.e ** (-self.lambtha * x)
+        return pdf
+
 
 # np.random.seed(0)
 # data = np.random.exponential(0.5, 100).tolist()
 # e1 = Exponential(data)
-# print("Lambtha:", e1.lambtha)
+# print('f(1):', e1.pdf(1))
 
 # e2 = Exponential(lambtha=2)
-# print("Lambtha:", e2.lambtha)
+# print('f(1):', e2.pdf(1))
