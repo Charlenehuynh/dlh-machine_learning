@@ -31,6 +31,7 @@ class Poisson:
         return pmf_value
 
     def cdf(self, k):
+        """PM(0) + PM(1)"""
         if not isinstance(k, int):
             k = int(k)
         if k < 0:
