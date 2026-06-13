@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 """Create a class Poisson that represents a poisson distribution:"""
 
-from math import factorial
-from math import e
-
 
 class Poisson:
     """Poisson"""
@@ -24,7 +21,11 @@ class Poisson:
         """(lambtha^k *e ^(-lamtha)) / k!"""
         if not isinstance(k, int):
             k = int(k)
-        pmf_value = (self.lambtha**k * e ** (-self.lambtha)) / factorial(k)
+        e = 2.71828
+        sum = 1
+        for i in range(1, k + 1):
+            sum *= i
+        pmf_value = (self.lambtha**k * e ** (-self.lambtha)) / sum
         return pmf_value
 
 
