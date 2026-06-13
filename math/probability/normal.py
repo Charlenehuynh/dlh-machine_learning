@@ -29,11 +29,24 @@ class Normal:
                 result += (i - self.mean) ** 2
             self.stddev = (result / len(data)) ** 0.5
 
+    def z_score(self, x):
+        """z = (x - mean) / standard deviation"""
+        z = (x - self.mean) / self.stddev
+        return z
+
+    def x_value(self, z):
+        """x = (z - mean) / standard deviation"""
+        x = (z * self.stddev) + self.mean
+        return x
+
 
 # np.random.seed(0)
 # data = np.random.normal(70, 10, 100).tolist()
 # n1 = Normal(data)
-# print("Mean:", n1.mean, ", Stddev:", n1.stddev)
+# print('Z(90):', n1.z_score(90))
+# print('X(2):', n1.x_value(2))
 
 # n2 = Normal(mean=70, stddev=10)
-# print("Mean:", n2.mean, ", Stddev:", n2.stddev)
+# print()
+# print('Z(90):', n2.z_score(90))
+# print('X(2):', n2.x_value(2))
