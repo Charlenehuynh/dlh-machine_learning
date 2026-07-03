@@ -3,6 +3,7 @@
 
 import numpy as np
 
+
 def factorial(k):
     """
     Calculates the factorial of a non-negative integer k.
@@ -11,6 +12,7 @@ def factorial(k):
     for i in range(2, k + 1):
         result *= i
     return result
+
 
 def likelihood(x, n, P):
     """hypothetical probabilities"""
