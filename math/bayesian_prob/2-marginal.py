@@ -2,8 +2,15 @@
 """calculates the likelihood of obtaining this data"""
 
 import numpy as np
-import math
 
+def factorial(k):
+    """
+    Calculates the factorial of a non-negative integer k.
+    """
+    result = 1
+    for i in range(2, k + 1):
+        result *= i
+    return result
 
 def likelihood(x, n, P):
     """hypothetical probabilities"""
@@ -20,7 +27,6 @@ def likelihood(x, n, P):
     if np.any(P < 0) or np.any(P > 1):
         raise ValueError("All values in P must be in the range [0, 1]")
 
-    factorial = math.factorial
     n_choose_x = factorial(n) / (factorial(x) * factorial(n - x))
 
     likelihoods = n_choose_x * (P**x) * ((1 - P) ** (n - x))
