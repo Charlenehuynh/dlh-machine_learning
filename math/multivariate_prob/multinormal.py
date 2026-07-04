@@ -24,11 +24,36 @@ class MultiNormal:
         self.mean = mean
         self.cov = cov
 
+    def pdf(self, x):
+        "Calculates the PDF at a data point"
+        if not isinstance(x, np.ndarray):
+            raise TypeError("x must be a numpy.ndarray")
 
-# np.random.seed(0)
-# data = np.random.multivariate_normal(
-#     [12, 30, 10], [[36, -30, 15], [-30, 100, -20], [15, -20, 25]], 10000
-# ).T
-# mn = MultiNormal(data)
-# print(mn.mean)
-# print(mn.cov)
+        d = self.mean.shape[0]
+
+        if len(x.shape) != 2 or x.shape != (d, 1):
+            raise ValueError("x must have the shape ({}, 1)".format(d))
+
+        det = np.linalg.det(self.cov)
+        inv = np.linalg.inv(self.cov)
+
+        deviation = x - self.mean
+        exponent = -0.5 * np.matmul(np.matmul(deviation.T, inv), deviation)
+
+        denominator = np.sqrt(((2 * np.pi) ** d) * det)
+
+        pdf_value = (1 / denominator) * np.exp(exponent[0][0])
+
+        return pdf_value
+
+
+np.random.seed(0)
+data = np.random.multivariate_normal(
+    [12, 30, 10], [[36, -30, 15], [-30, 100, -20], [15, -20, 25]], 10000
+).T
+mn = MultiNormal(data)
+x = np.random.multivariate_normal(
+    [12, 30, 10], [[36, -30, 15], [-30, 100, -20], [15, -20, 25]], 1
+).T
+print(x)
+print(mn.pdf(x))
