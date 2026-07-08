@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
+"""Function creates a pd.DataFrame from a np.ndarray"""
+
 import pandas as pd
 
 
 def from_numpy(array):
+    """Returns: the newly created pd.DataFrame"""
     size = array.shape
     abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     column = list(abc[: size[1]])
