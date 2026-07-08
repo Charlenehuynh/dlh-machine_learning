@@ -7,4 +7,3 @@ data = {
     'Second': ["one", "two", "three", "four"]
     }
 df = pd.DataFrame(data, ['A', 'B', 'C', 'D'])
-print(df)
