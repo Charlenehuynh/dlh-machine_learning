@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+"""Concat"""
+
+import pandas as pd
+
+
+def concat(df1, df2):
+    index = __import__("10-index").index
+    df1 = index(df1)
+    df2 = index(df2)
+    df2 = df2[df2.index <= 1417411920]
+    concat = pd.concat([df2, df1], keys=["bitstamp", "coinbase"])
+    return concat
