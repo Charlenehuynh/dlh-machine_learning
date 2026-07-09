@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
+"""Fill values"""
 
 
 def fill(df):
+    """Fill values"""
     df = df.drop(columns=["Weighted_Price"])
     df["Close"] = df["Close"].ffill()
     df["High"] = df["High"].fillna(df["Close"])
