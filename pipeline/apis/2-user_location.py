@@ -12,7 +12,7 @@ def fetch_location():
     if len(sys.argv) < 2:
         return
 
-    url = sys.argv[1]    
+    url = sys.argv[1]
     try:
         r = requests.get(url)
     except Exception:
