@@ -1,33 +1,40 @@
-#!/usr/bin/env python3
-""" write a script that prints the location of a specific user """
+#!/usr/bin/python3
+"""
+Script that prints the location of a specific GitHub user/URL.
+"""
 import sys
 import requests
 import time
 
 
-def get_user_location():
-    """ user is passed as first argument of the script with the full API URL"""
+def fetch_location():
     if len(sys.argv) < 2:
         return
 
     url = sys.argv[1]
-    response = requests.get(url)
+    
+    try:
+        r = requests.get(url)
+    except Exception:
+        return
 
-    if response.status_code == 200:
-        json_data = response.json()
-        location = json_data.get("location")
+    status = r.status_code
+
+    if status == 200:
+        # Fetch location key from JSON response
+        data = r.json()
+        location = data.get('location')
         if location:
             print(location)
-        else:
-            print("No location")
-    elif response.status_code == 404:
+    elif status == 404:
         print("Not found")
-    elif response.status_code == 403:
-        reset_timestamp = int(response.headers.get("X-Ratelimit-Reset", 0))
-        current_timestamp = int(time.time())
+    elif status == 403:
+        # Calculate reset time in minutes
+        reset_time = int(r.headers.get('X-Ratelimit-Reset', 0))
+        current_time = int(time.time())
+        minutes = (reset_time - current_time) // 60
+        print(f"Reset in {minutes} min")
 
-        reset_seconds = reset_timestamp - current_timestamp
-        reset_minutes = int(reset_seconds / 60)
-        print(f"Reset in {reset_minutes} min")
-    if __name__ == "__main__":
-        get_user_location()
+
+if __name__ == '__main__':
+    fetch_location()
