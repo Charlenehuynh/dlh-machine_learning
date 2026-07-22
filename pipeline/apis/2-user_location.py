@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-
+""" write a script that prints the location of a specific user """
 import sys
 import requests
 import time
 
 
 def get_user_location():
+    """ user is passed as first argument of the script with the full API URL"""
     if len(sys.argv) < 2:
         return
 
