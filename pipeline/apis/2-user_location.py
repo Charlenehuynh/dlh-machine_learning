@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Script that prints the location of a specific GitHub user/URL.
 """
@@ -8,6 +8,7 @@ import time
 
 
 def fetch_location():
+    """ Script that prints the location of a specific GitHub user/URL. """
     if len(sys.argv) < 2:
         return
 
